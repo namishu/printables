@@ -9,7 +9,7 @@ description = "Printable cards and paper templates for learning and family activ
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT AND OFL-1.1"
-license-files = ["LICENSE", "src/namishu_printables/assets/fonts/OFL.txt", "src/namishu_printables/assets/fonts/pinyin-OFL.txt", "THIRD_PARTY_NOTICES.md"]
+license-files = ["LICENSE", "src/namishu_printables/assets/fonts/OFL.txt", "src/namishu_printables/assets/fonts/pinyin-OFL.txt"]
 authors = [{name = "Namishu"}]
 keywords = ["printable", "pdf", "education", "cards", "handwriting"]
 classifiers = ["Environment :: Console", "Programming Language :: Python :: 3", "Operating System :: OS Independent"]
