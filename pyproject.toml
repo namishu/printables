@@ -34,7 +34,7 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 "namishu_printables.rating_card" = ["config/*.yaml"]
-namishu_printables = ["assets/fonts/*.ttf", "assets/fonts/*.txt", "assets/fonts/*.md"]
+namishu_printables = ["assets/fonts/*.ttf", "assets/fonts/*.txt"]
 "namishu_printables.hanzi_card" = ["config/*.yaml", "data/*.txt"]
 "namishu_printables.pinyin_chart" = ["config/*.yaml", "data/*.json"]
 "namishu_printables.writing_paper" = ["config/*.yaml"]

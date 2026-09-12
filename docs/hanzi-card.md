@@ -160,5 +160,5 @@ namishu-printables hanzi-card --config design.yaml
 颜色使用加引号的十六进制值，如 `"#5f667e"`。
 
 自定义字体路径相对于 YAML 文件，也可以使用绝对路径。未指定时使用内置字体，
-字体会嵌入 PDF，接收者无需安装。字体来源与许可见[字体说明](../src/namishu_printables/assets/fonts/README.md)。
+字体会嵌入 PDF，接收者无需安装。
 设置无效、字体缺字或内容放不下时，命令会报错，并保留已有 PDF。

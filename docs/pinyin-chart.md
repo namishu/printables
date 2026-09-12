@@ -149,4 +149,3 @@ namishu-printables pinyin-chart --config design.yaml
 
 颜色使用加引号的十六进制值，如 `"#5f667e"`。尺寸和间距单位为毫米，字号单位为磅。
 自定义字体路径相对于 YAML 文件，也可以使用绝对路径；字体嵌入 PDF，接收者无需安装。
-内置字体的来源与许可见[字体说明](../src/namishu_printables/assets/fonts/README.md)。

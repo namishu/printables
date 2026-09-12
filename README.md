@@ -142,8 +142,4 @@ namishu-printables values-worksheet
 
 ## 许可证
 
-代码、原创文档和模板设计采用 [MIT](LICENSE)。
-字体保留 [SIL OFL 1.1](src/namishu_printables/assets/fonts/OFL.txt)。
-拼音表使用宝宝字帖拼音常规体，来源及许可见[字体说明](src/namishu_printables/assets/fonts/README.md)。
-生成的汉字卡、拼音表、权益卡、价值观探索表、评分卡和书写纸可打印、分享、修改及销售；嵌入字体保留自己的许可证。
-权益卡中的四张 PNG 插图（star、event、face、cut）原样迁自平行项目 `printables-latex/07-reward-card/gfx/`。
+代码、原创文档和模板设计采用 [MIT](LICENSE)。内置字体的版权归原作者所有，并保留原始许可证。
