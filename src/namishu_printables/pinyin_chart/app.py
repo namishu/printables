@@ -41,10 +41,10 @@ class DocumentPlan:
 
     @property
     def filename(self) -> str:
-        return f"pinyin-card-{self.category}.pdf"
+        return f"pinyin-chart-{self.category}.pdf"
 
 
-class PinyinCardApp:
+class PinyinChartApp:
     def __init__(self, config_path: str | Path | None = None):
         self.config_path = Path(config_path).resolve() if config_path is not None else None
 
@@ -98,7 +98,7 @@ class PinyinCardApp:
 
     def render(self, plan: DocumentPlan, output_path: str | Path | None = None) -> Path:
         output = resolve_output_path(output_path if output_path is not None else plan.filename)
-        with pdf_document(output, title="Pinyin cards") as pdf:
+        with pdf_document(output, title="拼音表") as pdf:
             for page in plan.pages:
                 layout = page.config["layout"]
                 pdf.setPageSize((layout["width_mm"] * mm, layout["height_mm"] * mm))

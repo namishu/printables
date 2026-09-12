@@ -37,7 +37,7 @@ def validate(cfg: dict) -> None:
 
 def load_configs(path: Path | None) -> dict[str, dict]:
     base = yaml.safe_load(
-        files("namishu_printables.pinyin_card").joinpath("config/defualt.yaml").read_text(encoding="utf-8")
+        files("namishu_printables.pinyin_chart").joinpath("config/defualt.yaml").read_text(encoding="utf-8")
     )
     defaults = base.pop("categories")
     override = {} if path is None else yaml.safe_load(path.read_text(encoding="utf-8-sig"))

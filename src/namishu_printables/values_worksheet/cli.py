@@ -5,13 +5,13 @@ import argparse
 import yaml
 
 from .. import __version__
-from .app import ValuesCardApp
+from .app import ValuesWorksheetApp
 from .input import export_default
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        prog="namishu-printables values-card", description="使用内置或自定义词表生成价值观探索卡。"
+        prog="namishu-printables values-worksheet", description="使用内置或自定义词表生成价值观探索表。"
     )
     source = parser.add_mutually_exclusive_group()
     source.add_argument("--file", help="UTF-8 词表文件，每行一项；默认使用内置的 80 项")
@@ -27,7 +27,7 @@ def main(argv: list[str] | None = None) -> int:
             output = export_default(args.export_default)
             print(f"已导出默认词表：{output}")
             return 0
-        output = ValuesCardApp(args.config).generate(file_path=args.file, output_path=args.output)
+        output = ValuesWorksheetApp(args.config).generate(file_path=args.file, output_path=args.output)
     except (ValueError, OSError, yaml.YAMLError) as exc:
         parser.error(str(exc))
     print(f"Generated 1 PDF: {output} (1 page)")

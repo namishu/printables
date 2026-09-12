@@ -33,12 +33,13 @@ version = {attr = "namishu_printables.__version__"}
 where = ["src"]
 
 [tool.setuptools.package-data]
+"namishu_printables.rating_card" = ["config/*.yaml"]
 namishu_printables = ["assets/fonts/*.ttf", "assets/fonts/*.txt", "assets/fonts/*.md"]
 "namishu_printables.hanzi_card" = ["config/*.yaml", "data/*.txt"]
-"namishu_printables.pinyin_card" = ["config/*.yaml", "data/*.json"]
+"namishu_printables.pinyin_chart" = ["config/*.yaml", "data/*.json"]
 "namishu_printables.writing_paper" = ["config/*.yaml"]
 "namishu_printables.reward_card" = ["config/*.yaml", "gfx/*.png"]
-"namishu_printables.values_card" = ["config/*.yaml", "data/*.txt"]
+"namishu_printables.values_worksheet" = ["config/*.yaml", "data/*.txt"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

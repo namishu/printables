@@ -1,4 +1,4 @@
-<h1 align="center">价值观探索卡</h1>
+<h1 align="center">价值观探索表</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat&amp;logo=python&amp;logoColor=white" alt="Python 3.10+">
@@ -9,17 +9,17 @@
 <p align="center"><a href="../README.md">返回项目首页</a></p>
 
 <p align="center">
-  <a href="../examples/values-card/values-card.pdf">
-    <img src="../examples/values-card/preview.png" alt="价值观探索卡预览：80 个选项，按四列排列，每项旁有勾选框" width="400">
+  <a href="../examples/values-worksheet/values-worksheet.pdf">
+    <img src="../examples/values-worksheet/preview.png" alt="价值观探索表预览：80 个选项，按四列排列，每项旁有勾选框" width="400">
   </a>
 </p>
 
-你现在最在意的是什么？价值观探索卡适合在家庭聚会、朋友聚会时一起使用，也适合独处时留一点时间给自己。通过几轮选择和取舍，看看哪些事情对当下的自己最重要，也为彼此的交流找到一个起点。
+你现在最在意的是什么？价值观探索表适合在家庭聚会、朋友聚会时一起使用，也适合独处时留一点时间给自己。通过几轮选择和取舍，看看哪些事情对当下的自己最重要，也为彼此的交流找到一个起点。
 
 一张 A4 纸列出 80 个选项，涵盖生活、关系、成长、成就和社会关怀等方面。每个词都允许有不同的理解，没有标准答案。比如“自由”可以是自己安排时间，也可以是敢于表达想法；选择时，以你自己的理解为准。
 
 <p align="center">
-  示例 PDF 文件：<a href="../examples/values-card/values-card.pdf">价值观探索卡打印版</a>
+  示例 PDF 文件：<a href="../examples/values-worksheet/values-worksheet.pdf">价值观探索表打印版</a>
 </p>
 
 ## 使用方法
@@ -45,10 +45,10 @@
 
 ## 快速开始
 
-直接生成内置 80 项的价值观探索卡：
+直接生成内置 80 项的价值观探索表：
 
 ```bash
-namishu-printables values-card
+namishu-printables values-worksheet
 ```
 
 ## 其他命令
@@ -56,13 +56,13 @@ namishu-printables values-card
 使用自己的词表，每行一个选项，按文件中的顺序生成：
 
 ```bash
-namishu-printables values-card --file my-values.txt
+namishu-printables values-worksheet --file my-values.txt
 ```
 
 如果只想修改默认词表中的几项，可以先导出：
 
 ```bash
-namishu-printables values-card --export-default my-values.txt
+namishu-printables values-worksheet --export-default my-values.txt
 ```
 
 打开 `my-values.txt`，增删或修改选项，保存后用 `--file my-values.txt` 生成。
@@ -71,13 +71,13 @@ namishu-printables values-card --export-default my-values.txt
 指定配置和 PDF 输出路径：
 
 ```bash
-namishu-printables values-card --file my-values.txt --config design.yaml -o family.pdf
+namishu-printables values-worksheet --file my-values.txt --config design.yaml -o family.pdf
 ```
 
 生成卡片时只输出一个 PDF，始终一页。输出默认在运行命令的当前目录：
 
-- 默认选项：`values-card.pdf`。
-- 文件输入：`values-card-<输入文件名，不含扩展名>.pdf`。
+- 默认选项：`values-worksheet.pdf`。
+- 文件输入：`values-worksheet-<输入文件名，不含扩展名>.pdf`。
 - `-o` / `--output` 指定完整 PDF 路径。
 
 成功生成后替换同名文件；输入、配置或绘制失败时保留已有文件。
@@ -99,12 +99,12 @@ namishu-printables values-card --file my-values.txt --config design.yaml -o fami
 
 默认最多 100 项，每项最多 80 个字符，输入文件最多 65536 字节；可在 YAML 的 `limits` 下修改。
 这些是输入上限，不代表任意长度的 100 项都能在一页内排下。
-完整默认词表见 [values.txt](../examples/values-card/values.txt)，家庭示例见 [family.txt](../examples/values-card/family.txt)。
+完整默认词表见 [values.txt](../examples/values-worksheet/values.txt)，家庭示例见 [family.txt](../examples/values-worksheet/family.txt)。
 
 ## 布局与配置
 
 命令行负责选文件和输出路径，YAML 负责设计、布局与输入限制。
-默认配置文件为 `default.yaml`。完整配置见 [design.yaml](../examples/values-card/design.yaml)，只写需要覆盖的字段即可：
+默认配置文件为 `default.yaml`。完整配置见 [design.yaml](../examples/values-worksheet/design.yaml)，只写需要覆盖的字段即可：
 
 ```yaml
 layout:

@@ -14,7 +14,7 @@ class Category:
 CATEGORIES = tuple(
     Category(c["id"], tuple(c["items"]))
     for c in json.loads(
-        files("namishu_printables.pinyin_card").joinpath("data/categories.json").read_text(encoding="utf-8")
+        files("namishu_printables.pinyin_chart").joinpath("data/categories.json").read_text(encoding="utf-8")
     )
 )
 

@@ -35,7 +35,7 @@ class PagePlan:
     filename: str
 
 
-class ValuesCardApp:
+class ValuesWorksheetApp:
     def __init__(self, config_path: str | Path | None = None):
         self.config_path = Path(config_path) if config_path is not None else None
 
@@ -86,7 +86,7 @@ class ValuesCardApp:
             Item(v, xs[i % columns], top - row_height / 2 - (i // columns) * (row_height + row_gap))
             for i, v in enumerate(values)
         )
-        filename = "values-card.pdf" if file_path is None else f"values-card-{Path(file_path).stem}.pdf"
+        filename = "values-worksheet.pdf" if file_path is None else f"values-worksheet-{Path(file_path).stem}.pdf"
         separator_offset = separator_gap + separator_stroke / 2
         separator_ys = (top + separator_offset, top - block_height - separator_offset)
         return PagePlan(items, columns, rows, font, size, box_size, separator_ys, block_width, cfg, filename)

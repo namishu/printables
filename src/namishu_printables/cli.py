@@ -8,10 +8,11 @@ from importlib import import_module
 from . import __version__
 
 COMMANDS = {
-    "values-card": "Values exploration checklist, one page",
+    "rating-card": "亲子评分卡，每页两张，可涂色爱心",
+    "values-worksheet": "价值观探索表，内置或自定义词表",
     "reward-card": "Blank reward voucher with signatures and usage notes",
     "hanzi-card": "Chinese character cards, up to two characters per page",
-    "pinyin-card": "Initials, finals and whole syllables in square cards",
+    "pinyin-chart": "拼音表，包含声母、韵母和整体认读音节",
     "writing-paper": "Lined, square-grid and English handwriting paper",
 }
 

@@ -11,10 +11,10 @@ from fontTools.ttLib import TTFont
 from pypdf import PdfReader
 from reportlab.lib.units import mm
 
-import namishu_printables.pinyin_card.app as app_module
-from namishu_printables.pinyin_card import PinyinCardApp
-from namishu_printables.pinyin_card.catalog import CATEGORIES
-from namishu_printables.pinyin_card.layout import text_grid
+import namishu_printables.pinyin_chart.app as app_module
+from namishu_printables.pinyin_chart import PinyinChartApp
+from namishu_printables.pinyin_chart.catalog import CATEGORIES
+from namishu_printables.pinyin_chart.layout import text_grid
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -22,16 +22,16 @@ ROOT = Path(__file__).resolve().parents[1]
 def configured(tmp_path, overrides):
     path = tmp_path / "design.yaml"
     path.write_text(yaml.safe_dump(overrides), encoding="utf-8")
-    return PinyinCardApp(path)
+    return PinyinChartApp(path)
 
 
 @pytest.mark.parametrize("category,count", [("shengmu", 1), ("yunmu", 1), ("yinjie", 1), ("all", 3)])
 def test_pdf_pages_content_order_no_footer(tmp_path, monkeypatch, category, count):
     monkeypatch.chdir(tmp_path)
-    app = PinyinCardApp()
+    app = PinyinChartApp()
     plan = app.plan(category)
     output = app.render(plan)
-    assert output == tmp_path / f"pinyin-card-{category}.pdf"
+    assert output == tmp_path / f"pinyin-chart-{category}.pdf"
     assert list(tmp_path.iterdir()) == [output]
     pdf = PdfReader(output)
     assert len(pdf.pages) == count
@@ -142,7 +142,7 @@ def test_font_paths_relative_to_config(tmp_path, monkeypatch):
 def test_atomic_failure_keeps_existing_file(tmp_path, monkeypatch):
     output = tmp_path / "cards.pdf"
     output.write_bytes(b"old PDF")
-    plan = PinyinCardApp().plan("all")
+    plan = PinyinChartApp().plan("all")
     original = app_module.draw_page
     count = 0
 
@@ -155,7 +155,7 @@ def test_atomic_failure_keeps_existing_file(tmp_path, monkeypatch):
 
     monkeypatch.setattr(app_module, "draw_page", fail)
     with pytest.raises(RuntimeError, match="drawing failed"):
-        PinyinCardApp().render(plan, output)
+        PinyinChartApp().render(plan, output)
     assert output.read_bytes() == b"old PDF"
     assert list(tmp_path.iterdir()) == [output]
 
@@ -164,7 +164,7 @@ def cli(tmp_path, *args):
     env = os.environ.copy()
     env["PYTHONPATH"] = str(ROOT / "src")
     return subprocess.run(
-        [sys.executable, "-m", "namishu_printables", "pinyin-card", *args],
+        [sys.executable, "-m", "namishu_printables", "pinyin-chart", *args],
         cwd=tmp_path,
         env=env,
         text=True,
@@ -209,7 +209,7 @@ def test_cli_help(tmp_path):
 def test_cli_default_and_single_category(tmp_path, category, count):
     result = cli(tmp_path, *([] if category is None else [category]))
     assert result.returncode == 0, result.stderr
-    pdf = PdfReader(tmp_path / f"pinyin-card-{category or 'all'}.pdf")
+    pdf = PdfReader(tmp_path / f"pinyin-chart-{category or 'all'}.pdf")
     assert len(pdf.pages) == count
     assert all(not any(title in p.extract_text() for title in ("声母", "韵母", "整体认读音节")) for p in pdf.pages)
 
@@ -264,13 +264,13 @@ def test_grid_geometry_and_uniform_font(tmp_path, overrides):
 
 
 def test_default_grid_fills_page_and_matches_single_category():
-    plan = PinyinCardApp().plan()
+    plan = PinyinChartApp().plan()
     assert [len(page.rows) for page in plan.pages] == [4, 4, 4]
     assert [{card.font_size_pt for card in page.cards} for page in plan.pages] == [{96}, {64}, {80}]
     assert [page.config["grid"]["row_gap_mm"] for page in plan.pages] == [8, 10, 10]
     for page in plan.pages:
         assert all(len(row) == page.grid.columns for row in page.rows[:-1])
-        assert page.cards == PinyinCardApp().plan(page.category.id).pages[0].cards
+        assert page.cards == PinyinChartApp().plan(page.category.id).pages[0].cards
     assert len(plan.pages[0].rows[-1]) == 5
 
 
@@ -356,9 +356,9 @@ def test_common_columns_and_category_precedence(tmp_path):
 
 @pytest.mark.parametrize("category", ["shengmu", "yunmu", "yinjie"])
 def test_boxes_center_visible_letters(tmp_path, category):
-    from namishu_printables.pinyin_card.typography import text_bounds
+    from namishu_printables.pinyin_chart.typography import text_bounds
 
-    app = PinyinCardApp()
+    app = PinyinChartApp()
     plan = app.plan(category)
     page = plan.pages[0]
     bounds = text_bounds(page.content_font, tuple(c.text for c in page.cards))
@@ -380,7 +380,7 @@ def test_boxes_center_visible_letters(tmp_path, category):
 
 
 def test_hiding_border_preserves_layout(tmp_path):
-    original = PinyinCardApp().plan()
+    original = PinyinChartApp().plan()
     app = configured(tmp_path, {"card": {"enabled": False}})
     hidden = app.plan()
     assert [p.cards for p in hidden.pages] == [p.cards for p in original.pages]

@@ -1,0 +1,95 @@
+# 尺寸单位为 mm；字号和线宽单位为 pt。只需覆盖要修改的项目。
+page:
+  width_mm: 210
+  height_mm: 297
+  margin_left_mm: 15
+  margin_right_mm: 15
+  margin_top_mm: 12
+  margin_bottom_mm: 12
+  cut:
+    width_pt: 0.6
+    color: '#9299ab'
+    dash_length_mm: 2
+    dash_gap_mm: 1.5
+layout:
+  title_gap_mm: 11
+  footer_gap_mm: 7
+  footer_min_gap_mm: 5
+fonts:
+  content: bundled
+title:
+  text: 评分卡
+  width_mm: 65
+  font_size_pt: 22
+  color: '#5f667e'
+  padding:
+    left_mm: 4
+    right_mm: 4
+    top_mm: 4
+    bottom_mm: 4
+  blank_min_width_mm: 20
+  border:
+    width_pt: 0.8
+    color: '#5f667e'
+    radius_mm: 3
+  separator:
+    width_pt: 0.6
+    color: '#9299ab'
+    dash_length_mm: 1.5
+    dash_gap_mm: 1
+table:
+  font_size_pt: 16
+  color: '#5f667e'
+  padding:
+    left_mm: 5
+    right_mm: 5
+    top_mm: 3.3
+    bottom_mm: 3.3
+  border:
+    width_pt: 0.8
+    color: '#5f667e'
+    radius_mm: 1.5
+  horizontal:
+    width_pt: 0.6
+    color: '#9299ab'
+    dash_length_mm: 1.5
+    dash_gap_mm: 1
+  vertical:
+    width_pt: 0.6
+    color: '#9299ab'
+    dash_length_mm: 1.5
+    dash_gap_mm: 1
+  labels:
+    five: 非常满意
+    four: 值得表扬
+    three: 没有问题
+    two: 差点意思
+    one: 无话可说
+heart:
+  size_mm: 7
+  gap_mm: 3
+  width_pt: 0.8
+  color: '#b46b7a'
+writing:
+  width_mm: 60
+footer:
+  reviewer: 评价人
+  date: 日期
+  width_mm: 55
+  font_size_pt: 13
+  color: '#5f667e'
+  padding:
+    left_mm: 2.5
+    right_mm: 2.5
+    top_mm: 2.5
+    bottom_mm: 2.5
+  blank_min_width_mm: 20
+  border:
+    width_pt: 0.8
+    color: '#5f667e'
+    radius_mm: 3
+  separator:
+    width_pt: 0.6
+    color: '#9299ab'
+    dash_length_mm: 1.5
+    dash_gap_mm: 1

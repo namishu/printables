@@ -72,9 +72,10 @@ def test_invalid_top_level_does_not_generate(tmp_path, args):
     "args,pages",
     [
         (["hanzi-card", "天地玄黄"], 2),
-        (["pinyin-card", "all"], 3),
+        (["pinyin-chart", "all"], 3),
         (["reward-card"], 1),
-        (["values-card"], 1),
+        (["rating-card"], 1),
+        (["values-worksheet"], 1),
         (["writing-paper", "grid", "--cell-size", "8"], 1),
     ],
 )
@@ -90,13 +91,13 @@ def test_short_output_option_from_arbitrary_directory(tmp_path, args, pages):
 def test_values_file_cli_and_overflow(tmp_path):
     source = tmp_path / "家庭.txt"
     source.write_text("陪伴\n信任\n尊重\n", encoding="utf-8")
-    result = run(tmp_path, "values-card", "--file", str(source))
+    result = run(tmp_path, "values-worksheet", "--file", str(source))
     assert result.returncode == 0, result.stderr
-    output = tmp_path / "values-card-家庭.pdf"
+    output = tmp_path / "values-worksheet-家庭.pdf"
     assert PdfReader(output).pages[0].extract_text().splitlines() == ["陪伴", "信任", "尊重"]
     original = output.read_bytes()
     source.write_text("健康\n" * 101, encoding="utf-8")
-    result = run(tmp_path, "values-card", "--file", str(source))
+    result = run(tmp_path, "values-worksheet", "--file", str(source))
     assert result.returncode == 2
     assert "max_items" in result.stderr
     assert "Traceback" not in result.stderr
@@ -104,24 +105,24 @@ def test_values_file_cli_and_overflow(tmp_path):
 
 
 def test_values_export_edit_and_generate(tmp_path):
-    result = run(tmp_path, "values-card", "--export-default", "词表/my-values.txt")
+    result = run(tmp_path, "values-worksheet", "--export-default", "词表/my-values.txt")
     assert result.returncode == 0, result.stderr
     source = tmp_path / "词表/my-values.txt"
-    bundled = ROOT / "src/namishu_printables/values_card/data/values.txt"
+    bundled = ROOT / "src/namishu_printables/values_worksheet/data/values.txt"
     assert source.read_text(encoding="utf-8") == bundled.read_text(encoding="utf-8")
     assert not list(tmp_path.rglob("*.pdf"))
     source.write_text("陪伴\n信任\n", encoding="utf-8")
-    result = run(tmp_path, "values-card", "--export-default", str(source))
+    result = run(tmp_path, "values-worksheet", "--export-default", str(source))
     assert result.returncode == 2
     assert source.read_text(encoding="utf-8") == "陪伴\n信任\n"
-    result = run(tmp_path, "values-card", "--file", str(source))
+    result = run(tmp_path, "values-worksheet", "--file", str(source))
     assert result.returncode == 0, result.stderr
-    page = PdfReader(tmp_path / "values-card-my-values.pdf").pages[0]
+    page = PdfReader(tmp_path / "values-worksheet-my-values.pdf").pages[0]
     assert page.extract_text().splitlines() == ["陪伴", "信任"]
 
 
 @pytest.mark.parametrize("extra", [["--file", "input.txt"], ["--config", "design.yaml"], ["-o", "x.pdf"]])
 def test_values_export_rejects_generation_options(tmp_path, extra):
-    result = run(tmp_path, "values-card", "--export-default", "values.txt", *extra)
+    result = run(tmp_path, "values-worksheet", "--export-default", "values.txt", *extra)
     assert result.returncode == 2
     assert not list(tmp_path.iterdir())

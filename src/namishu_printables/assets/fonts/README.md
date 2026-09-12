@@ -6,7 +6,7 @@
 保留字体名称为 Source。文件从原有 Namishu 项目迁入，未作修改。
 上游项目为 [Noto CJK](https://github.com/notofonts/noto-cjk)，完整许可见 [OFL.txt](OFL.txt)。
 
-## 拼音卡字体
+## 拼音表字体
 
 `pinyin-regular.ttf` 为[宝宝字帖拼音字体](https://github.com/jaywcjlove/pinyin-font)的常规体，
 版权归王楚江（2024）所有，保留字体名称为 `pinyin` 和 `宝宝字帖拼音字体`。

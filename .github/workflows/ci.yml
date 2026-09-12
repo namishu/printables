@@ -34,6 +34,7 @@ jobs:
           "$verify_python" -m namishu_printables --version
           "$verify_python" -m namishu_printables writing-paper grid -o verify-grid.pdf
           "$verify_python" -m namishu_printables hanzi-card 天地 -o verify-hanzi.pdf
-          "$verify_python" -m namishu_printables pinyin-card all -o verify-pinyin.pdf
+          "$verify_python" -m namishu_printables pinyin-chart all -o verify-pinyin.pdf
           "$verify_python" -m namishu_printables reward-card -o verify-reward.pdf
-          "$verify_python" -m namishu_printables values-card -o verify-values.pdf
+          "$verify_python" -m namishu_printables values-worksheet -o verify-values.pdf
+          "$verify_python" -m namishu_printables rating-card -o verify-score.pdf
