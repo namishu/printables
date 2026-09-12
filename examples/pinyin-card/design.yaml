@@ -1,0 +1,42 @@
+layout:
+  width_mm: 297
+  height_mm: 210
+  margin_left_mm: 20
+  margin_right_mm: 20
+  margin_top_mm: 20
+  margin_bottom_mm: 20
+grid:
+  column_gap_mm: 6
+card:
+  enabled: true
+  shape: square
+  padding_mm: 3
+  border_width_pt: 0.8
+  border_color: '#5f667e'
+fonts:
+  content: bundled
+content:
+  color: '#5f667e'
+categories:
+  shengmu:
+    grid:
+      columns: 6
+      row_gap_mm: 8
+    content:
+      font_size_pt: 96
+  yunmu:
+    card:
+      shape: rectangle
+    grid:
+      columns: 6
+      row_gap_mm: 10
+    content:
+      font_size_pt: 64
+  yinjie:
+    card:
+      shape: rectangle
+    grid:
+      columns: 4
+      row_gap_mm: 10
+    content:
+      font_size_pt: 80

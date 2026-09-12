@@ -1,0 +1,61 @@
+# 尺寸单位为 mm；字号和线宽单位为 pt。
+layout:
+  width_mm: 210
+  height_mm: 297
+  margin_left_mm: 20
+  margin_right_mm: 20
+  margin_top_mm: 20
+  margin_bottom_mm: 20
+card:
+  width_mm: 160
+  height_mm: 88
+  border_radius_mm: 3
+  border_width_pt: 1
+  border_color: '#5f667e'
+title:
+  font_size_pt: 22
+  color: '#5f667e'
+  padding_mm: 2
+  border_radius_mm: 3
+  border_width_pt: 1
+  border_color: '#5f667e'
+fonts:
+  content: bundled
+upper:
+  padding_top_mm: 10
+  padding_bottom_mm: 10
+  padding_left_mm: 15
+  padding_right_mm: 15
+  title_gap_mm: 6
+  icon_gap_mm: 6
+  line_width_pt: 0.6
+  line_color: '#9299ab'
+  fields:
+    reward:
+      title: 权益名称
+      icon: star
+    expiry:
+      title: 截止日期
+      icon: event
+    child:
+      title: 孩子签名
+      icon: face
+lower:
+  padding_top_mm: 10
+  padding_bottom_mm: 10
+  padding_left_mm: 15
+  padding_right_mm: 15
+  title: 权益说明
+  lines: 3
+  line_width_pt: 0.6
+  line_color: '#9299ab'
+cut:
+  dash_length_mm: 2
+  dash_gap_mm: 1.5
+  text: 家长签名
+  icon_inset_mm: 10
+  icon_size_mm: 10
+  line_width_pt: 0.8
+  color: '#9299ab'
+  watermark_font_size_pt: 28
+  watermark_color: '#d1d4dc'

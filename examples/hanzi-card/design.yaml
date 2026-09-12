@@ -1,0 +1,27 @@
+input:
+  max_characters: 300
+layout:
+  width_mm: 297
+  height_mm: 210
+card:
+  # 方框边长允许 80～120 毫米；字号、内边距和拼音间距以 100 毫米为基准缩放。
+  size_mm: 100
+  padding_mm: 8
+  border_radius_mm: 1
+  border_width_pt: 1.4
+  border_color: '#5f667e'
+hanzi:
+  font_size_pt: 200
+  color: '#5f667e'
+pinyin:
+  font_size_pt: 48
+  color: '#5f667e'
+  gap_mm: 8
+separator:
+  enabled: true
+  width_pt: 0.7
+  color: '#9a9aa8'
+  dashed: true
+fonts:
+  hanzi: bundled
+  pinyin: bundled
