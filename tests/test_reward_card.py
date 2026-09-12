@@ -44,8 +44,9 @@ def test_single_page_blank_card_with_embedded_font(tmp_path, monkeypatch):
             assert start[1] == args[1]
             paths.append(float(args[1]) / mm)
     assert len(paths) == 7
-    middle_index = next(i for i, (args, op) in enumerate(operations)
-                        if op == b"l" and abs(float(args[1]) / mm - 148.5) < 0.01)
+    middle_index = next(
+        i for i, (args, op) in enumerate(operations) if op == b"l" and abs(float(args[1]) / mm - 148.5) < 0.01
+    )
     assert float(operations[middle_index - 1][0][0]) == 0
     assert float(operations[middle_index][0][0]) == pytest.approx(210 * mm, abs=0.01)
     assert sum(abs(y - 148.5) < 0.01 for y in paths) == 1
@@ -65,13 +66,20 @@ def test_geometry_and_handwriting_space():
     for text in plan.texts:
         ascent, descent = (n / mm for n in pdfmetrics.getAscentDescent(plan.font, text.size_pt))
         width = pdfmetrics.stringWidth(text.value, plan.font, text.size_pt) / mm
-        assert any(box.x_mm <= text.x_mm and text.x_mm + width <= box.x_mm + box.width_mm
-                   and box.y_mm <= text.y_mm + descent
-                   and text.y_mm + ascent <= box.y_mm + box.height_mm for box in plan.labels)
+        assert any(
+            box.x_mm <= text.x_mm
+            and text.x_mm + width <= box.x_mm + box.width_mm
+            and box.y_mm <= text.y_mm + descent
+            and text.y_mm + ascent <= box.y_mm + box.height_mm
+            for box in plan.labels
+        )
     for line in plan.lines:
         assert line.x2_mm - line.x1_mm >= 20
-        assert any(box.x_mm + 10 <= line.x1_mm < line.x2_mm <= box.x_mm + box.width_mm - 10
-                   and box.y_mm + 10 <= line.y_mm <= box.y_mm + box.height_mm - 10 for box in plan.cards)
+        assert any(
+            box.x_mm + 10 <= line.x1_mm < line.x2_mm <= box.x_mm + box.width_mm - 10
+            and box.y_mm + 10 <= line.y_mm <= box.y_mm + box.height_mm - 10
+            for box in plan.cards
+        )
     assert plan.labels[-1].x_mm == plan.labels[0].x_mm
     for upper, lower in zip(plan.lines[:3], plan.lines[3:], strict=True):
         assert upper.x1_mm > lower.x1_mm
@@ -106,7 +114,6 @@ def test_geometry_and_handwriting_space():
         ({"fonts": {"content": "missing.ttf"}}, "Cannot load font"),
         ({"upper": {"fields": {"reward": {"icon": "missing.png"}}}}, "Cannot load icon"),
         ({"cut": {"icon_size_mm": 200}}, "Watermark"),
-
     ],
 )
 def test_invalid_design_preserves_existing_pdf(tmp_path, data, match):
@@ -121,8 +128,8 @@ def test_invalid_design_preserves_existing_pdf(tmp_path, data, match):
 
 def test_labels_lines_and_config_snapshot(tmp_path):
     app = configured(
-        tmp_path, {"upper": {"fields": {"reward": {"title": "奖励名称"}, "child": {"title": "领取人"}}},
-                   "lower": {"lines": 2}}
+        tmp_path,
+        {"upper": {"fields": {"reward": {"title": "奖励名称"}, "child": {"title": "领取人"}}}, "lower": {"lines": 2}},
     )
     plan = app.plan()
     assert len(plan.lines) == 5
@@ -160,16 +167,24 @@ def test_drawing_failure_is_atomic(tmp_path, monkeypatch):
 
 
 def test_custom_half_page_margins(tmp_path):
-    plan = configured(tmp_path, {"layout": {
-        "margin_left_mm": 10, "margin_right_mm": 30,
-        "margin_top_mm": 15, "margin_bottom_mm": 25,
-    }}).plan()
+    plan = configured(
+        tmp_path,
+        {
+            "layout": {
+                "margin_left_mm": 10,
+                "margin_right_mm": 30,
+                "margin_top_mm": 15,
+                "margin_bottom_mm": 25,
+            }
+        },
+    ).plan()
     for box, cy in zip(plan.cards, (227.75, 79.25), strict=True):
         assert box.x_mm + box.width_mm / 2 == 95
         assert box.y_mm + box.height_mm / 2 == cy
-    assert plan.watermark.x_mm + pdfmetrics.stringWidth(
-        plan.watermark.value, plan.font, plan.watermark.size_pt
-    ) / mm / 2 == 105
+    assert (
+        plan.watermark.x_mm + pdfmetrics.stringWidth(plan.watermark.value, plan.font, plan.watermark.size_pt) / mm / 2
+        == 105
+    )
 
 
 def test_migrated_icons_match_reference():
@@ -183,14 +198,29 @@ def test_migrated_icons_match_reference():
 
 
 def test_independent_padding_styles_and_frame_alignment(tmp_path):
-    app = configured(tmp_path, {
-        "title": {"font_size_pt": 20, "padding_mm": 3, "border_width_pt": 1.5, "color": "#123456"},
-        "upper": {"padding_top_mm": 6, "padding_bottom_mm": 14, "padding_left_mm": 12,
-                  "padding_right_mm": 8, "line_color": "#ff0000", "line_width_pt": 1.2},
-        "lower": {"padding_top_mm": 14, "padding_bottom_mm": 6, "padding_left_mm": 8,
-                  "padding_right_mm": 12, "line_color": "#0000ff", "line_width_pt": 0.4},
-        "cut": {"text": "签字发卡", "dash_length_mm": 3, "dash_gap_mm": 2},
-    })
+    app = configured(
+        tmp_path,
+        {
+            "title": {"font_size_pt": 20, "padding_mm": 3, "border_width_pt": 1.5, "color": "#123456"},
+            "upper": {
+                "padding_top_mm": 6,
+                "padding_bottom_mm": 14,
+                "padding_left_mm": 12,
+                "padding_right_mm": 8,
+                "line_color": "#ff0000",
+                "line_width_pt": 1.2,
+            },
+            "lower": {
+                "padding_top_mm": 14,
+                "padding_bottom_mm": 6,
+                "padding_left_mm": 8,
+                "padding_right_mm": 12,
+                "line_color": "#0000ff",
+                "line_width_pt": 0.4,
+            },
+            "cut": {"text": "签字发卡", "dash_length_mm": 3, "dash_gap_mm": 2},
+        },
+    )
     plan = app.plan()
     for label, line in zip(plan.labels[:3], plan.lines[:3], strict=True):
         assert line.y_mm - line.width_pt / mm / 2 == pytest.approx(label.y_mm)
@@ -209,16 +239,20 @@ def test_independent_padding_styles_and_frame_alignment(tmp_path):
     reader = PdfReader(app.generate(output_path=tmp_path / "styled.pdf"))
     assert "签字发卡" in reader.pages[0].extract_text()
     operations = ContentStream(reader.pages[0].get_contents(), reader).operations
-    assert any(op == b"d" and list(map(float, args[0])) == pytest.approx([3 * mm, 2 * mm])
-               for args, op in operations)
+    assert any(op == b"d" and list(map(float, args[0])) == pytest.approx([3 * mm, 2 * mm]) for args, op in operations)
 
 
 def test_custom_icons_and_disabled_icon(tmp_path, monkeypatch):
     image = tmp_path / "custom.png"
     image.write_bytes((ROOT / "src/namishu_printables/reward_card/gfx/star.png").read_bytes())
-    app = configured(tmp_path, {"upper": {"fields": {
-        "reward": {"icon": "custom.png"}, "expiry": {"icon": "none"}, "child": {"icon": "event"}
-    }}})
+    app = configured(
+        tmp_path,
+        {
+            "upper": {
+                "fields": {"reward": {"icon": "custom.png"}, "expiry": {"icon": "none"}, "child": {"icon": "event"}}
+            }
+        },
+    )
     monkeypatch.chdir(ROOT)
     plan = app.plan()
     assert len(plan.icons) == 2

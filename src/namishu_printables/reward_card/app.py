@@ -68,9 +68,7 @@ class RewardCardApp:
 
     def plan(self) -> PagePlan:
         cfg = load_config(self.config_path)
-        page, card, title, upper, lower, cut = (
-            cfg[k] for k in ("layout", "card", "title", "upper", "lower", "cut")
-        )
+        page, card, title, upper, lower, cut = (cfg[k] for k in ("layout", "card", "title", "upper", "lower", "cut"))
         width = page["width_mm"] - page["margin_left_mm"] - page["margin_right_mm"]
         half = page["height_mm"] / 2
         height = half - page["margin_top_mm"] - page["margin_bottom_mm"]

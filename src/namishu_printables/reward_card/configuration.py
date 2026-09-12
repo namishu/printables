@@ -25,9 +25,11 @@ def load_config(path: Path | None = None) -> dict:
                 if not re.fullmatch(r"#[0-9a-fA-F]{6}", value):
                     raise ValueError(f"{key} must be #RRGGBB")
             elif isinstance(value, (int, float)):
-                zero = name.startswith(("margin_", "padding_")) or name.endswith("gap_mm") or name in {
-                    "border_radius_mm", "icon_inset_mm"
-                }
+                zero = (
+                    name.startswith(("margin_", "padding_"))
+                    or name.endswith("gap_mm")
+                    or name in {"border_radius_mm", "icon_inset_mm"}
+                )
                 if not math.isfinite(value) or (value < 0 if zero else value <= 0):
                     raise ValueError(f"{key} must be {'non-negative' if zero else 'positive'}")
             elif not value.strip() or any(ord(c) < 32 or ord(c) == 127 or c in "\u2028\u2029" for c in value):
