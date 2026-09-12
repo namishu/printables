@@ -1,0 +1,39 @@
+name: Prepare PDF release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  checks:
+    uses: ./.github/workflows/ci.yml
+  draft:
+    needs: checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.14'
+      - name: Check version and release notes
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          uv run python scripts/release_notes.py "$RELEASE_TAG" > "$RUNNER_TEMP/release-notes.md"
+      - run: uv build
+      - name: Build PDFs from installed wheel
+        run: |
+          uv venv "$RUNNER_TEMP/pdf-release"
+          verify_python="$RUNNER_TEMP/pdf-release/bin/python"
+          uv pip install --python "$verify_python" dist/*.whl pypdf
+          "$verify_python" scripts/build_pdf_bundle.py --output dist/pdf
+      - name: Create draft with PDF attachments
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$RELEASE_TAG" --verify-tag --draft \
+            --title "$RELEASE_TAG" --notes-file "$RUNNER_TEMP/release-notes.md" \
+            dist/pdf/*.pdf dist/pdf/*.zip

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from importlib import import_module
 
 from . import __version__
@@ -18,6 +19,9 @@ COMMANDS = {
 
 
 def main(argv: list[str] | None = None) -> int:
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(
         prog="namishu-printables",
         description="Printable cards and paper templates for learning and family activities.",

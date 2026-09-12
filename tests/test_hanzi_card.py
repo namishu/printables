@@ -211,12 +211,12 @@ def cli(tmp_path, *args):
         cwd=tmp_path,
         env=env,
         capture_output=True,
-        text=True,
+        encoding="utf-8",
     )
 
 
 def test_cli_current_directory_and_relative_paths(tmp_path):
-    (tmp_path / "words.txt").write_text("天地玄黄人")
+    (tmp_path / "words.txt").write_text("天地玄黄人", encoding="utf-8")
     (tmp_path / "design.yaml").write_text("separator:\n  enabled: false\n")
     result = cli(tmp_path, "--file", "words.txt", "--config", "design.yaml", "--output", "out/cards.pdf")
     assert result.returncode == 0, result.stderr
@@ -357,7 +357,9 @@ def test_cli_annotated_file_and_full_override_conflict(tmp_path):
 def test_bundled_characters_without_source(tmp_path, monkeypatch, no_pinyin):
     from importlib.resources import files
 
-    expected = "".join(files("namishu_printables.hanzi_card").joinpath("data/characters.txt").read_text().split())
+    expected = "".join(
+        files("namishu_printables.hanzi_card").joinpath("data/characters.txt").read_text(encoding="utf-8").split()
+    )
     assert len(expected) == 300
     monkeypatch.chdir(tmp_path)
     app = HanziCardApp()

@@ -74,7 +74,7 @@ def test_file_order_blank_lines_duplicates_and_naming(tmp_path, monkeypatch):
         (b"\xff", "UTF-8"),
         (("健康\n" * 101).encode(), "max_items"),
         (("健" * 81).encode(), "max_item_length"),
-        (b"x" * 65537, "max_file_bytes"),
+        pytest.param(b"x" * 65537, "max_file_bytes", id="file-too-large"),
         (b"a\x00b", "control"),
         (b"a\x0bb", "control"),
         ("a\u2028b".encode(), "control"),

@@ -20,7 +20,7 @@ def run(tmp_path, *args):
         [sys.executable, "-m", "namishu_printables", *args],
         cwd=tmp_path,
         env=env,
-        text=True,
+        encoding="utf-8",
         capture_output=True,
     )
 
@@ -40,7 +40,7 @@ assert not {"reportlab", "pypinyin", "pyproj", "shapely", "yaml"}.intersection(s
         [sys.executable, "-c", script],
         cwd=tmp_path,
         env={**os.environ, "PYTHONPATH": str(ROOT / "src")},
-        text=True,
+        encoding="utf-8",
         capture_output=True,
     )
     assert result.returncode == 0, result.stderr
@@ -126,3 +126,11 @@ def test_values_export_rejects_generation_options(tmp_path, extra):
     result = run(tmp_path, "values-worksheet", "--export-default", "values.txt", *extra)
     assert result.returncode == 2
     assert not list(tmp_path.iterdir())
+
+
+def test_chinese_output_with_legacy_pipe_encoding(tmp_path, monkeypatch):
+    monkeypatch.setenv("PYTHONIOENCODING", "cp1252")
+    result = run(tmp_path, "rating-card", "-o", "评分卡.pdf")
+    assert result.returncode == 0, result.stderr
+    assert "评分卡.pdf" in result.stdout
+    assert len(PdfReader(tmp_path / "评分卡.pdf").pages) == 1

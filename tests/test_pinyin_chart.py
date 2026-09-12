@@ -167,7 +167,7 @@ def cli(tmp_path, *args):
         [sys.executable, "-m", "namishu_printables", "pinyin-chart", *args],
         cwd=tmp_path,
         env=env,
-        text=True,
+        encoding="utf-8",
         capture_output=True,
     )
 

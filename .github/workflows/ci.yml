@@ -1,5 +1,5 @@
 name: CI
-on: [push, pull_request, workflow_dispatch]
+on: [push, pull_request, workflow_dispatch, workflow_call]
 permissions:
   contents: read
 jobs:
@@ -29,7 +29,7 @@ jobs:
           else
             verify_python="$RUNNER_TEMP/printables-verify/bin/python"
           fi
-          uv pip install --python "$verify_python" dist/*.whl
+          uv pip install --python "$verify_python" dist/*.whl pypdf
           cd "$RUNNER_TEMP"
           "$verify_python" -m namishu_printables --version
           "$verify_python" -m namishu_printables writing-paper grid -o verify-grid.pdf
@@ -38,3 +38,4 @@ jobs:
           "$verify_python" -m namishu_printables reward-card -o verify-reward.pdf
           "$verify_python" -m namishu_printables values-worksheet -o verify-values.pdf
           "$verify_python" -m namishu_printables rating-card -o verify-score.pdf
+          "$verify_python" "$GITHUB_WORKSPACE/scripts/build_pdf_bundle.py" --output "$RUNNER_TEMP/pdf-bundle"
