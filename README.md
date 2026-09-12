@@ -10,6 +10,12 @@
 
 为家庭、课堂和聚会提供可直接打印的素材，省去自己整理内容和排版的时间。
 
+## 下载
+
+[下载整套 PDF](https://github.com/namishu/printables/releases/latest/download/namishu-printables-pdf.zip) · [查看版本与单份附件](https://github.com/namishu/printables/releases/latest) · [更新记录](CHANGELOG.md)
+
+下载解压后即可打印，无需安装软件。需要自定义内容或布局时，再使用下方的命令行工具。
+
 ## 书写纸
 
 提供横条、方格和英文四线三格三种版式，适合抄写、计算和字母练习。家里临时需要练习纸，或课堂上需要统一发放时，选择所需样式即可打印。

@@ -23,6 +23,7 @@
 
 <p align="center">
   示例 PDF 文件：<a href="../examples/writing-paper/writing-paper-lined.pdf">横条书写纸</a> · <a href="../examples/writing-paper/writing-paper-grid.pdf">正方格纸</a> · <a href="../examples/writing-paper/writing-paper-english.pdf">英文四线三格纸</a>
+  <br>下载：<a href="https://github.com/namishu/printables/releases/latest/download/writing-paper-lined.pdf">横条</a> · <a href="https://github.com/namishu/printables/releases/latest/download/writing-paper-grid.pdf">方格</a> · <a href="https://github.com/namishu/printables/releases/latest/download/writing-paper-english.pdf">英文</a>
 </p>
 
 每份示例均为一页，可直接下载打印。

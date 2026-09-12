@@ -22,6 +22,7 @@
 
 <p align="center">
   示例 PDF 文件：<a href="../examples/hanzi-card/hanzi-card.pdf">汉字卡打印版</a>
+  <br>下载：<a href="https://github.com/namishu/printables/releases/latest/download/hanzi-card.pdf">完整 300 字汉字卡</a>
 </p>
 
 示例包含“天地”两个字，共一页。打印后沿中间虚线裁开即可得到两张字卡。

@@ -20,6 +20,7 @@
 
 <p align="center">
   示例 PDF 文件：<a href="../examples/reward-card/reward-card.pdf">权益卡打印版</a>
+  <br>下载：<a href="https://github.com/namishu/printables/releases/latest/download/reward-card.pdf">正式版 PDF</a>
 </p>
 
 ## 使用说明

@@ -20,6 +20,7 @@
 
 <p align="center">
   示例 PDF 文件：<a href="../examples/values-worksheet/values-worksheet.pdf">价值观探索表打印版</a>
+  <br>下载：<a href="https://github.com/namishu/printables/releases/latest/download/values-worksheet.pdf">正式版 PDF</a>
 </p>
 
 ## 使用方法

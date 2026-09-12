@@ -20,6 +20,7 @@
 
 <p align="center">
   示例 PDF 文件：<a href="../examples/rating-card/rating-card.pdf">评分卡打印版</a>
+  <br>下载：<a href="https://github.com/namishu/printables/releases/latest/download/rating-card.pdf">正式版 PDF</a>
 </p>
 
 ## 填写方法

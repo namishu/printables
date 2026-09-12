@@ -24,6 +24,7 @@
 
 <p align="center">
   示例 PDF 文件：<a href="../examples/pinyin-chart/pinyin-chart.pdf">整套拼音表</a>
+  <br>下载：<a href="https://github.com/namishu/printables/releases/latest/download/pinyin-chart.pdf">正式版 PDF</a>
 </p>
 
 示例包含三页，依次为声母、韵母和整体认读音节；预览图展示其中的韵母页。
