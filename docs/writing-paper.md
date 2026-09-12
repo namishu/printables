@@ -1,6 +1,14 @@
 <h1 align="center">书写纸</h1>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat&amp;logo=python&amp;logoColor=white" alt="Python 3.10+">
+  <a href="../LICENSE"><img src="https://img.shields.io/badge/License-MIT-22A06B?style=flat" alt="代码许可证：MIT"></a>
+  <img src="https://img.shields.io/badge/PDF-A4_portrait-E05D44?style=flat" alt="PDF: A4 portrait">
+</p>
+
+<p align="center"><a href="../README.md">返回项目首页</a></p>
+
+<p align="center">
   <a href="../examples/writing-paper/writing-paper-lined.pdf"><img src="../examples/writing-paper/preview.png" alt="横条书写纸" width="180"></a>
   <a href="../examples/writing-paper/writing-paper-grid.pdf"><img src="../examples/writing-paper/grid.png" alt="正方格纸" width="180"></a>
   <a href="../examples/writing-paper/writing-paper-english.pdf"><img src="../examples/writing-paper/english.png" alt="英文四线三格纸" width="180"></a>

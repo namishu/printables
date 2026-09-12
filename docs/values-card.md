@@ -1,6 +1,14 @@
 <h1 align="center">价值观探索卡</h1>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat&amp;logo=python&amp;logoColor=white" alt="Python 3.10+">
+  <a href="../LICENSE"><img src="https://img.shields.io/badge/License-MIT-22A06B?style=flat" alt="代码许可证：MIT"></a>
+  <img src="https://img.shields.io/badge/PDF-A4_portrait-E05D44?style=flat" alt="PDF: A4 portrait">
+</p>
+
+<p align="center"><a href="../README.md">返回项目首页</a></p>
+
+<p align="center">
   <a href="../examples/values-card/values-card.pdf">
     <img src="../examples/values-card/preview.png" alt="价值观探索卡预览：80 个选项，按四列排列，每项旁有勾选框" width="400">
   </a>

@@ -90,70 +90,37 @@ python -m pip install .
 
 ## 快速开始
 
+以下命令生成的 PDF 默认保存在当前目录。
+
+```bash
+namishu-printables writing-paper lined
+```
+
+生成一页横条书写纸 `writing-paper-lined.pdf`。方格纸、英文四线三格纸和分栏用法见[书写纸说明](docs/writing-paper.md)。
+
+```bash
+namishu-printables reward-card
+```
+
+生成一页 `reward-card.pdf`，包含交给孩子的权益卡和家长保留的存根。填写与使用方法见[权益卡说明](docs/reward-card.md)。
+
+```bash
+namishu-printables pinyin-card
+```
+
+生成三页 `pinyin-card.pdf`，声母、韵母和整体认读音节各一页。单独打印某一类的用法见[拼音卡说明](docs/pinyin-card.md)。
+
 ```bash
 namishu-printables hanzi-card
-namishu-printables pinyin-card
-namishu-printables reward-card
+```
+
+生成内置 300 个汉字的 `hanzi-card.pdf`，每页两个字，共 150 页。打印少量汉字或指定拼音的用法见[汉字卡说明](docs/hanzi-card.md)。
+
+```bash
 namishu-printables values-card
-namishu-printables writing-paper lined
-namishu-printables writing-paper grid
-namishu-printables writing-paper english
 ```
 
-汉字卡默认生成 300 字、共 150 页；自定义少量汉字的用法见[汉字卡说明](docs/hanzi-card.md)。
-
-书写纸只需选择 `lined`（横条）、`grid`（方格）或 `english`（英文），即可生成默认版式。
-需要两三栏书写纸时，见[书写纸说明](docs/writing-paper.md)。
-
-示例文本文件位于源码目录；安装后也可以传入任意本地 UTF-8 文件。
-默认输出到运行命令时的当前目录。通过 `-o` / `--output` 指定 PDF 路径：
-
-```bash
-namishu-printables hanzi-card "天地" -o cards/characters.pdf
-namishu-printables pinyin-card yunmu --config examples/pinyin-card/design.yaml
-```
-
-输入、输出和配置的相对路径以当前目录为准；YAML 内的相对字体路径以 YAML 所在目录为准。
-输出目录不存在时自动创建。完整生成成功后才覆盖同名文件，失败会保留原文件。
-命令会显示绝对输出路径和页数。
-
-```bash
-namishu-printables --help
-namishu-printables hanzi-card --help
-namishu-printables --version
-```
-
-## 配置
-
-命令行选择本次内容和数量，YAML 配置设计、布局、默认值和允许范围。
-每个工具单独使用配置文件，只填写需要覆盖的字段；未知字段、非法数值或放不下的布局会报错。
-尺寸使用 `_mm`，字号和线宽使用 `_pt`，颜色使用加引号的 `"#RRGGBB"`。
-字体统一放在 `fonts` 下，按 `hanzi`、`pinyin`、`content` 等用途分别配置。
-
-各模块的使用说明中提供完整配置、预览和示例 PDF。例如 `design.yaml` 只需写：
-
-```yaml
-layout:
-  margin_left_mm: 20
-  margin_right_mm: 20
-```
-
-```bash
-namishu-printables hanzi-card "天地" --config design.yaml
-```
-
-## 开发
-
-```bash
-uv sync --group dev
-uv run pytest
-uv run ruff check .
-uv run ruff format --check .
-uv build
-```
-
-测试检查真实 PDF 的页数、文字、几何尺寸、字体和失败保护。
-CI 配置覆盖 Linux、macOS、Windows 的 Python 3.10 和 3.14，并验证安装后的 wheel。
+生成一页 `values-card.pdf`，包含 80 个可勾选的价值选项。活动步骤、导出词表和自定义选项的用法见[价值观探索卡说明](docs/values-card.md)。
 
 ## 许可证
 

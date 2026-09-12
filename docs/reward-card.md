@@ -1,6 +1,14 @@
 <h1 align="center">权益卡</h1>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat&amp;logo=python&amp;logoColor=white" alt="Python 3.10+">
+  <a href="../LICENSE"><img src="https://img.shields.io/badge/License-MIT-22A06B?style=flat" alt="代码许可证：MIT"></a>
+  <img src="https://img.shields.io/badge/PDF-A4_portrait-E05D44?style=flat" alt="PDF: A4 portrait">
+</p>
+
+<p align="center"><a href="../README.md">返回项目首页</a></p>
+
+<p align="center">
   <a href="../examples/reward-card/reward-card.pdf">
     <img src="../examples/reward-card/preview.png" alt="权益卡预览：上卡填写权益信息，下卡由家长留底，中间为签名裁剪线" width="400">
   </a>
