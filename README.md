@@ -8,13 +8,9 @@
   <img src="https://img.shields.io/badge/PDF-A4-E05D44?style=flat" alt="PDF：A4">
 </p>
 
-为家庭、课堂和聚会提供可直接打印的素材，省去自己整理内容和排版的时间。
-
-## 下载
-
-[下载整套 PDF](https://github.com/namishu/printables/releases/latest/download/namishu-printables-pdf.zip) · [查看版本与单份附件](https://github.com/namishu/printables/releases/latest) · [更新记录](CHANGELOG.md)
-
-下载解压后即可打印，无需安装软件。需要自定义内容或布局时，再使用下方的命令行工具。
+<p align="center">
+  <a href="https://github.com/namishu/printables/releases/latest">下载链接</a> · <a href="CHANGELOG.md">更新记录</a>
+</p>
 
 ## 书写纸
 
